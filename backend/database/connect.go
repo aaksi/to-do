@@ -13,7 +13,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	err := godotenv.Load("../.env")
+	err := godotenv.Load("../../.env")
 	if err != nil {
 		panic(errors.New("connection failed"))
 	}
