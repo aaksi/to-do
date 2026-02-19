@@ -8,6 +8,16 @@ import (
 	"github.com/gofiber/fiber/v3"
 )
 
+func GetMe(c fiber.Ctx) error {
+	// Достаем ID, который положил туда Middleware
+	id := c.Locals("user_id")
+
+	return c.JSON(fiber.Map{
+		"your_id": id,
+		"status":  "Ты авторизован!",
+	})
+}
+
 func main() {
 	database.Connect()
 
@@ -75,5 +85,10 @@ func main() {
 	app.Post("/register", handlers.RegisterHandler)
 	app.Get("/login", handlers.LoginHandler)
 	fmt.Println("Сервер v3 запущен на порту 3000")
+	//api := app.Group("/api", middleware.Auth)
+	//api.Get("/me", handlers.GetPrifile)
+
+
+
 	app.Listen(":3000")
 }

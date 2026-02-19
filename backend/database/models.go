@@ -12,7 +12,7 @@ type User struct {
 type Task struct {
 	ID            uint   `gorm:"primaryKey"`
 	Title         string `gorm:"not null"`
-	IsTimed       bool   `gorm:"default:false"`
+	IsTimed       bool   `gorm:"default:false" `
 	AllocatedTime int
 	SpentTime     int
 
@@ -25,5 +25,5 @@ type Task struct {
 	UserID uint
 
 	ParentID *uint
-	SubTasks []Task `gorm:"foreignKey:ParentID"`
+	SubTasks []Task `gorm:"foreignKey:ParentID" `
 }
